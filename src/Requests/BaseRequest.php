@@ -27,7 +27,7 @@ abstract class BaseRequest
 
         if ($id === null) {
             return json_decode($client->get($url, [
-                'headers' => ['token', $this->token],
+                'headers' => ['apikey', $this->token],
                 'query' => $this->params
             ])->getBody());
         } else {
