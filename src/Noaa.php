@@ -13,7 +13,7 @@ class Noaa
      * @param  array $datasets
      * @return $this
      */
-    public function datasets($dataset)
+    public function datasets($dataset = null)
     {
         $this->request = $dataset ? new Dataset($dataset) : new Dataset();
     }
