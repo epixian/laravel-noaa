@@ -29,4 +29,20 @@ class Noaa
         return $this->request->get($id);
     }
 
+
+
+    public function withDataType($dataTypeId)
+    {
+        return $this->request->withDataType($dataTypeId);
+    }
+
+    public function withLocation($locationId)
+    {
+        return $this->request->withLocation($locationId);
+    }
+
+    public function withStation($stationId)
+    {
+        return $this->request->withStation($stationId);
+    }
 }
