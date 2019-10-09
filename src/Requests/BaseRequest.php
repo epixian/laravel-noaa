@@ -26,7 +26,10 @@ abstract class BaseRequest
         $url = $this->baseUrl . $this->endpoint;
 
         if ($id === null) {
-            return json_decode($client->get($url, ['query' => $this->params])->getBody());
+            return json_decode($client->get($url, [
+                'auth' => ['token', $this->token],
+                'query' => $this->params
+            ])->getBody());
         } else {
             return json_decode($client->get($url . $id)->getBody());
         }
