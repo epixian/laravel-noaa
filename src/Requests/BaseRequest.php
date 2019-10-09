@@ -24,10 +24,10 @@ abstract class BaseRequest
         $client = new \GuzzleHttp\Client();
 
         $url = $this->baseUrl . $this->endpoint;
-
+        dd($this->token);
         if ($id === null) {
             return json_decode($client->get($url, [
-                'headers' => ['token', $this->token],
+                'headers' => ['token' => $this->token],
                 'query' => $this->params
             ])->getBody());
         } else {
