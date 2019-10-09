@@ -16,5 +16,23 @@
             "name": "Erich Oelschlegel",
             "email": "erich@epixian.com"
         }
-    ]
+    ],
+    "autoload": {
+        "psr-4": {
+            "Epixian\\LaravelNoaa\\": "src"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Epixian\\LaravelNoaa\\LaravelNoaaServiceProvider"
+            ],
+            "aliases": {
+                "Noaa": "Epixian\\LaravelNoaa\\Facades\\Noaa"
+            }
+        }
+    },
+    "config": {
+        "sort-packages": true
+    }
 }
