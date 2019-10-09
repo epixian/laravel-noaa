@@ -15,7 +15,7 @@ class LaravelNoaaServiceProvider extends ServiceProvider
     {
         $source = dirname(__DIR__) . '/config/noaa.php';
 
-        $this->publishes([$source => config_path('noaa.php')]);
+        $this->publishes([$source => config_path('noaa.php')], 'epixian-laravel-noaa');
 
         $this->mergeConfigFrom($source, 'noaa');
     }
