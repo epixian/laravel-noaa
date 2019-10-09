@@ -16,7 +16,7 @@ class Dataset extends BaseRequest
      * @param  string|array $dataTypeId 
      * @return $this
      */
-    public function dataType($dataTypeId)
+    public function withDataType($dataTypeId)
     {
         $this->params['datatypeid'] = is_array($dataTypeId) ? implode('&', $dataTypeId) : $dataTypeId;
 
@@ -28,7 +28,7 @@ class Dataset extends BaseRequest
      * @param  string|array $locationId
      * @return $this
      */
-    public function location($locationId)
+    public function withLocation($locationId)
     {
         $this->params['locationid'] = is_array($locationId) ? implode('&', $locationId) : $locationId;
 
@@ -40,7 +40,7 @@ class Dataset extends BaseRequest
      * @param  string|array $stationId
      * @return $this
      */
-    public function station($stationId)
+    public function withStation($stationId)
     {
         $this->params['stationid'] = is_array($stationId) ? implode('&', $stationId) : $stationId;
 
