@@ -16,6 +16,8 @@ class Noaa
     public function datasets($dataset = null)
     {
         $this->request = $dataset ? new Dataset($dataset) : new Dataset();
+
+        return $this;
     }
 
     public function get($id = null)
