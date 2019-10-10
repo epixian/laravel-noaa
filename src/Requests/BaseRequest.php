@@ -25,6 +25,8 @@ abstract class BaseRequest
 
         $url = $this->baseUrl . $this->endpoint;
 
+        $this->endpoint = null;
+        
         if ($id === null) {
             return json_decode($client->get($url, [
                 'headers' => ['token' => $this->token],
@@ -62,13 +64,18 @@ abstract class BaseRequest
     /**
      * Set the sortfield and sortorder fields
      * @param  string $field the field to sort on
-     * @param  string|null $direction the direction to sort e.g. 'asc' (default) or 'desc'
+     * @param  string|null $direction the direction to sort e.g. 'asc' (default if not previously set) or 'desc'.
      * @return $this
+     * @throws \UnexpectedValueException
      */
     public function orderBy($field, $direction = 'asc')
     {
+        if (! in_array($field, ['id', 'name', 'mindate', 'maxdate', 'datacoverage'])) {
+            throw new \UnexpectedValueException('No such field \'' . $field . '\'.');
+        }
+
         $this->params['sortfield'] = $field;
-        $this->params['sortorder'] = $direction;
+        $this->params['sortorder'] = isset($this->params['sortorder']) ? $this->params['sortorder'] : $direction;
 
         return $this;
     }
@@ -120,7 +127,7 @@ abstract class BaseRequest
      */
     public function latest()
     {
-        $this->params['sortfield'] = 'date';
+        $this->params['sortfield'] = 'maxdate';
         $this->params['sortorder'] = 'desc';
 
         return $this;
@@ -132,7 +139,7 @@ abstract class BaseRequest
      */
     public function oldest()
     {
-        $this->params['sortfield'] = 'date';
+        $this->params['sortfield'] = 'mindate';
         $this->params['sortorder'] = 'asc';
 
         return $this;
