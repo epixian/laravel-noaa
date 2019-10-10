@@ -118,7 +118,7 @@ $dataset = \Noaa::datasets()->withStation(['COOP:310090', 'COOP:310184'])->get()
 
 ### Data Categories
 
-Returns the available dataset(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
+Returns the available data category(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
 
 ##### `withDataset(id)`
 `id` is a string containing a single valid dataset ID, or an array of strings representing multiple dataset IDs.
@@ -146,36 +146,36 @@ $dataset = \Noaa::dataCategories()->withStation(['COOP:310090', 'COOP:310184'])-
 
 ### Data Types
 
-Returns the available dataset(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
+Returns the available data type(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
 
 ##### `withDataset(id)`
 `id` is a string containing a single valid dataset ID, or an array of strings representing multiple dataset IDs.
 ```php
-$dataset = \Noaa::dataCategories()->withDataset('ACMH')->get();
+$dataset = \Noaa::dataTypes()->withDataset('ACMH')->get();
 // or
-$dataset = \Noaa::dataCategories()->withDataset(['ACMH', 'GSOM'])->get();
+$dataset = \Noaa::dataTypes()->withDataset(['ACMH', 'GSOM'])->get();
 ```
 
 ##### `withLocation(id)`
 `id` is a string containing a single valid location ID, or an array of strings representing multiple location IDs.
 ```php
-$dataset = \Noaa::dataCategories()->withLocation('FIPS:37')->get();
+$dataset = \Noaa::dataTypes()->withLocation('FIPS:37')->get();
 // or
-$dataset = \Noaa::dataCategories()->withLocation(['FIPS:09', 'FIPS:10'])->get();
+$dataset = \Noaa::dataTypes()->withLocation(['FIPS:09', 'FIPS:10'])->get();
 ```
 
 ##### `withStation(id)`
 `id` is a string containing a single valid station ID, or an array of strings representing multiple station IDs.
 ```php
-$dataset = \Noaa::dataCategories()->withStation('COOP:310090')->get();
+$dataset = \Noaa::dataTypes()->withStation('COOP:310090')->get();
 // or
-$dataset = \Noaa::dataCategories()->withStation(['COOP:310090', 'COOP:310184'])->get();
+$dataset = \Noaa::dataTypes()->withStation(['COOP:310090', 'COOP:310184'])->get();
 ```
 
 ##### `withDataCategory(id)`
 `id` is a string containing a single valid data category ID, or an array of strings representing multiple data category IDs.
 ```php
-$dataset = \Noaa::dataCategories()->withDataCategory('ANNAGR')->get();
+$dataset = \Noaa::dataTypes()->withDataCategory('ANNAGR')->get();
 // or
-$dataset = \Noaa::dataCategories()->withDataCategory(['ANNAGR', 'ANNTEMP'])->get();
+$dataset = \Noaa::dataTypes()->withDataCategory(['ANNAGR', 'ANNTEMP'])->get();
 ```

@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.3.1] - 2019-10-10
+  - Updates incorrect documentation for certain request types
+
 ## [0.3] - 2019-10-10
   - Added support for data categories, with the following constraint methods:
     - `withDataset()` - constrain by datasetid
