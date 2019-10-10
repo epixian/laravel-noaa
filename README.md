@@ -70,14 +70,14 @@ Executes the request and returns a JSON-decoded result (typically an array) depe
 Defaults to 25 if omitted.
 
 ##### `offset(number)`
-Defaults to 0 if omitted.
+Defaults to 0 if omitted.  Note: the API returns results with indexes starting at 1.  `offset(0)` and `offset(1)` produce equivalent results.
 
 #### Laravel-style helpers
 
 A number of method aliases are provided for convenience:
 
- * `latest()` - equivalent to `orderBy('date', 'desc')`
- * `oldest()` - equivalent to `orderBy('date', 'asc')`
+ * `latest()` - equivalent to `orderBy('maxdate', 'desc')`
+ * `oldest()` - equivalent to `orderBy('mindate', 'asc')`
  * `skip(number)` - alias of `offset()`
  * `take(number)` - alias of `limit()`
  * `where(field, value)` - sets a generic parameter (see https://www.ncdc.noaa.gov/cdo-web/webservices/v2)
