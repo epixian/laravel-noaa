@@ -51,7 +51,8 @@ class Noaa
 
             $this->request = null;
 
-            return $result;        }
+            return $result;
+        }
 
         throw new \BadMethodCallException('Method \'' . $function . '()\' does not exist.');
     }
