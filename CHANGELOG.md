@@ -1,11 +1,14 @@
 # Changelog
 
+## [0.2.3] - 2019-10-10
+  - Fixed bug where request type would not unset after `get()`
+
 ## [0.2.2] - 2019-10-10
- - Updated README with correct method names (changed during pre-0.1 development)
+  - Updated README with correct method names (changed during pre-0.1 development)
 
 ## [0.2.1] - 2019-10-10
- - Just kidding, this version actually adds support for 0.2 features listed below
- - Actually merged the dev branch into master before tagging
+  - Just kidding, this version actually adds support for 0.2 features listed below
+  - Actually merged the dev branch into master before tagging
 
 ## [0.2] - 2019-10-10
   - Added support for data categories, with the following constraint methods:
