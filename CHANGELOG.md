@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2] - 2019-10-10
+### Added
+  - Support for data categories, with the following constraint methods:
+    - `withDataset()` - constrain by datasetid
+    - `withLocation()` - constrain by locationid
+    - `withStation()` - constrain by stationid
+
 ## [0.1] - 2019-10-09
 Initial release
 ### Added
