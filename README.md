@@ -30,7 +30,7 @@ For a full listing of API request parameters, visit: https://www.ncdc.noaa.gov/c
 ##### `{requestType}()` 
 where `{requestType}` is one of:
   * [`datasets`](#datasets)
-  * `dataCategories`
+  * [`dataCategories`](#data-categories)
   * `dataTypes`
   * `locationCategories`
   * `locations`
@@ -96,23 +96,51 @@ Returns the available dataset(s) applicable to the given constraints (if any).  
 ##### `withDataType(id)`
 `id` is a string containing a single valid data type ID, or an array of strings representing multiple data type IDs.
 ```php
-$dataset = \Noaa::datasets()->dataType('ACMH')->get();
+$dataset = \Noaa::datasets()->withDataType('ACMH')->get();
 // or
-$dataset = \Noaa::datasets()->dataType(['ACMH', 'GSOM'])->get();
+$dataset = \Noaa::datasets()->withDataType(['ACMH', 'MLY-TAVG-NORMAL'])->get();
 ```
 
 ##### `withLocation(id)`
 `id` is a string containing a single valid location ID, or an array of strings representing multiple location IDs.
 ```php
-$dataset = \Noaa::datasets()->location('FIPS:37')->get();
+$dataset = \Noaa::datasets()->withLocation('FIPS:37')->get();
 // or
-$dataset = \Noaa::datasets()->location(['FIPS:09', 'FIPS:10'])->get();
+$dataset = \Noaa::datasets()->withLocation(['FIPS:09', 'FIPS:10'])->get();
 ```
 
 ##### `withStation(id)`
 `id` is a string containing a single valid station ID, or an array of strings representing multiple station IDs.
 ```php
-$dataset = \Noaa::datasets()->station('COOP:310090')->get();
+$dataset = \Noaa::datasets()->withStation('COOP:310090')->get();
 // or
-$dataset = \Noaa::datasets()->station(['COOP:310090', 'COOP:310184'])->get();
+$dataset = \Noaa::datasets()->withStation(['COOP:310090', 'COOP:310184'])->get();
+```
+
+### Data Categories
+
+Returns the available dataset(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
+
+##### `withDataset(id)`
+`id` is a string containing a single valid data type ID, or an array of strings representing multiple data type IDs.
+```php
+$dataset = \Noaa::dataCategories()->withDataset('ACMH')->get();
+// or
+$dataset = \Noaa::dataCategories()->withDataset(['ACMH', 'GSOM'])->get();
+```
+
+##### `withLocation(id)`
+`id` is a string containing a single valid location ID, or an array of strings representing multiple location IDs.
+```php
+$dataset = \Noaa::dataCategories()->withLocation('FIPS:37')->get();
+// or
+$dataset = \Noaa::dataCategories()->withLocation(['FIPS:09', 'FIPS:10'])->get();
+```
+
+##### `withStation(id)`
+`id` is a string containing a single valid station ID, or an array of strings representing multiple station IDs.
+```php
+$dataset = \Noaa::dataCategories()->withStation('COOP:310090')->get();
+// or
+$dataset = \Noaa::dataCategories()->withStation(['COOP:310090', 'COOP:310184'])->get();
 ```
