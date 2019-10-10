@@ -145,7 +145,7 @@ abstract class BaseRequest
      */
     public function skip($value)
     {
-        $this->offset($value);
+        return $this->offset($value);
     }
 
     /**
@@ -155,6 +155,6 @@ abstract class BaseRequest
      */
     public function take($value)
     {
-        $this->limit($value);
+        return $this->limit($value);
     }
 }
