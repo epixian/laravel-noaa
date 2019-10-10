@@ -31,7 +31,7 @@ For a full listing of API request parameters, visit: https://www.ncdc.noaa.gov/c
 where `{requestType}` is one of:
   * [`datasets`](#datasets)
   * [`dataCategories`](#data-categories)
-  * `dataTypes`
+  * [`dataTypes`](#data-types)
   * `locationCategories`
   * `locations`
   * `stations`
@@ -39,19 +39,18 @@ where `{requestType}` is one of:
 
 Sets the type of request to be generated.
 
+##### `get()`
+Executes the request and returns a JSON-decoded result (typically an array) depending on the API response.  Note: requires a request type method to be previously called and must be the last call when chaining methods.
 ```php
 // fetch all datasets
 $response = \Noaa::datasets()->get();
 ```
 
-Alternatively, every request type method except `data()` also accepts a single `string` argument representing an `id` belonging to that request type:
+Alternatively, you may supply a single `string` argument to `get()` representing an `id` belonging to that request type (valid for all request type methods except `data()`:
 ```php
 // fetch dataset with id of 'GSOM'
-$dataset = \Noaa::datasets('GSOM')->get();
+$dataset = \Noaa::datasets()->get('GSOM');
 ```
-
-##### `get()`
-Executes the request and returns a JSON-decoded result (typically an array) depending on the API response.  Note: requires the request type to be set and must be the last call when chaining methods.
 
 #### Optional
 
@@ -122,7 +121,7 @@ $dataset = \Noaa::datasets()->withStation(['COOP:310090', 'COOP:310184'])->get()
 Returns the available dataset(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
 
 ##### `withDataset(id)`
-`id` is a string containing a single valid data type ID, or an array of strings representing multiple data type IDs.
+`id` is a string containing a single valid dataset ID, or an array of strings representing multiple dataset IDs.
 ```php
 $dataset = \Noaa::dataCategories()->withDataset('ACMH')->get();
 // or
@@ -143,4 +142,40 @@ $dataset = \Noaa::dataCategories()->withLocation(['FIPS:09', 'FIPS:10'])->get();
 $dataset = \Noaa::dataCategories()->withStation('COOP:310090')->get();
 // or
 $dataset = \Noaa::dataCategories()->withStation(['COOP:310090', 'COOP:310184'])->get();
+```
+
+### Data Types
+
+Returns the available dataset(s) applicable to the given constraints (if any).  The following optional constraint methods are available:
+
+##### `withDataset(id)`
+`id` is a string containing a single valid dataset ID, or an array of strings representing multiple dataset IDs.
+```php
+$dataset = \Noaa::dataCategories()->withDataset('ACMH')->get();
+// or
+$dataset = \Noaa::dataCategories()->withDataset(['ACMH', 'GSOM'])->get();
+```
+
+##### `withLocation(id)`
+`id` is a string containing a single valid location ID, or an array of strings representing multiple location IDs.
+```php
+$dataset = \Noaa::dataCategories()->withLocation('FIPS:37')->get();
+// or
+$dataset = \Noaa::dataCategories()->withLocation(['FIPS:09', 'FIPS:10'])->get();
+```
+
+##### `withStation(id)`
+`id` is a string containing a single valid station ID, or an array of strings representing multiple station IDs.
+```php
+$dataset = \Noaa::dataCategories()->withStation('COOP:310090')->get();
+// or
+$dataset = \Noaa::dataCategories()->withStation(['COOP:310090', 'COOP:310184'])->get();
+```
+
+##### `withDataCategory(id)`
+`id` is a string containing a single valid data category ID, or an array of strings representing multiple data category IDs.
+```php
+$dataset = \Noaa::dataCategories()->withDataCategory('ANNAGR')->get();
+// or
+$dataset = \Noaa::dataCategories()->withDataCategory(['ANNAGR', 'ANNTEMP'])->get();
 ```
