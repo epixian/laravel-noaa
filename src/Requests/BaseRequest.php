@@ -19,7 +19,7 @@ abstract class BaseRequest
      * @param  string $id the ID of the data point for the specified query type
      * @return mixed
      */
-    public function get($id)
+    public function get($id = null)
     {
         $client = new \GuzzleHttp\Client();
 
