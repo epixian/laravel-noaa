@@ -47,8 +47,11 @@ class Noaa
         }
 
         if (method_exists($this->request, $function)) {
-            return $this->request->$function(sizeof($args) ? $args[0] : null);
-        }
+            $result = $this->request->$function(sizeof($args) ? $args[0] : null);
+
+            $this->request = null;
+
+            return $result;        }
 
         throw new \BadMethodCallException('Method \'' . $function . '()\' does not exist.');
     }
