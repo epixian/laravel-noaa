@@ -52,7 +52,7 @@ class DataType extends BaseRequest
      * @param  string|array $dataCategoryId
      * @return $this
      */
-    public function withStation($dataCategoryId)
+    public function withDataCategory($dataCategoryId)
     {
         $this->params['datacategoryid'] = is_array($dataCategoryId) ? implode('&', $dataCategoryId) : $dataCategoryId;
 
