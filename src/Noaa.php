@@ -20,21 +20,23 @@ class Noaa
         return $this;
     }
 
-    public function get($id = null)
-    {
-        if ($this->request === null) {
-            throw new Exception('Endpoint not specified.');
-        }
-
-        return $this->request->get($id);
-    }
-
+    /**
+     * Pass through non-explicitly defined method calls to the internal request class
+     * @param  string $function
+     * @param  array $args
+     * @return mixed
+     * @throws \BadMethodCallException
+     */
     public function __call($function, $args)
     {
-        if (method_exists($this->request, $function)) {
-            return $this->request->$function($args);
+        if ($this->request === null) {
+            throw new \BadMethodCallException('Must specify request type before chaining constraints.');
         }
 
-        throw new BadMethodCallException('Method does not exist.');
+        if (method_exists($this->request, $function)) {
+            return $this->request->$function(sizeof($args) ? $args[0] : null);
+        }
+
+        throw new \BadMethodCallException('Method \'' . $function . '()\' does not exist.');
     }
 }
