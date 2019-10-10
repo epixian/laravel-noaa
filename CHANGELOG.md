@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.3] - 2019-10-10
+  - Added support for data categories, with the following constraint methods:
+    - `withDataset()` - constrain by datasetid
+    - `withLocation()` - constrain by locationid
+    - `withStation()` - constrain by stationid
+    - `withDataCategory()` - constrain by datacategoryid
+  - Bugfix for API token not getting passed when requesting a single id
+  - Updates incorrect documentation for basic usage
+
 ## [0.2.3] - 2019-10-10
   - Fixed bug where request type would not unset after `get()`
 
