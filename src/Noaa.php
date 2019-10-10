@@ -3,6 +3,7 @@
 namespace Epixian\LaravelNoaa;
 
 use Epixian\LaravelNoaa\Requests\Dataset;
+use Epixian\LaravelNoaa\Requests\DataType;
 use Epixian\LaravelNoaa\Requests\DataCategory;
 
 class Noaa
@@ -10,7 +11,7 @@ class Noaa
     protected $request;
 
     /**
-     * Sets the dataset parameter for the query
+     * Creates a Dataset request type
      * @param string|array $dataset
      * @return $this
      */
@@ -22,13 +23,25 @@ class Noaa
     }
 
     /**
-     * Sets the datacategory parameter for the query
+     * Creates a DataCategory request type
      * @param string|array $dataCategory
      * @return $this
      */
     public function dataCategories($dataCategory = null)
     {
         $this->request = $dataCategory ? new DataCategory($dataCategory) : new DataCategory();
+
+        return $this;
+    }
+
+    /**
+     * Creates a DataType request type
+     * @param string|array $dataType
+     * @return $this
+     */
+    public function dataTypes($dataType = null)
+    {
+        $this->request = $dataType ? new DataType($dataType) : new DataType();
 
         return $this;
     }
