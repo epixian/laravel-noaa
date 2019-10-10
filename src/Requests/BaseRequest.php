@@ -31,7 +31,9 @@ abstract class BaseRequest
                 'query' => $this->params
             ])->getBody());
         } else {
-            return json_decode($client->get($url . $id)->getBody());
+            return json_decode($client->get($url . $id, [
+                'headers' => ['token' => $this->token]
+            ])->getBody());
         }
     }
 
