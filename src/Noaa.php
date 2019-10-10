@@ -29,20 +29,12 @@ class Noaa
         return $this->request->get($id);
     }
 
-
-
-    public function withDataType($dataTypeId)
+    public function __call($function, $args)
     {
-        return $this->request->withDataType($dataTypeId);
-    }
+        if (method_exists($this->request, $function)) {
+            return $this->request->$function($args);
+        }
 
-    public function withLocation($locationId)
-    {
-        return $this->request->withLocation($locationId);
-    }
-
-    public function withStation($stationId)
-    {
-        return $this->request->withStation($stationId);
+        throw new BadMethodCallException('Method does not exist.');
     }
 }
